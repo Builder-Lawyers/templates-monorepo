@@ -1,0 +1,26 @@
+---
+import { schema } from "./Header.types";
+import type { HeaderProps } from "./Header.types";
+import { autoProps } from "../../shared/lib/utils/autoProps";
+import Button from "@/shared/ui/Button.astro";
+
+const props = autoProps(Astro.props.props as HeaderProps, schema);
+---
+
+<header
+  {...props.$(props, true)}
+  class="border-b h-[96px] items-center justify-center w-full"
+>
+  <div class="h-full flex justify-between items-center w-full">
+    <h1 {...props.$(props.title)}>{props.title}</h1>
+    <div {...props.$(props.buttons)} class="flex gap-4">
+      {
+        props?.buttons?.map((button) => (
+          <Button {...props.$(button)} href={button.href}>
+            {button?.label}
+          </Button>
+        ))
+      }
+    </div>
+  </div>
+</header>

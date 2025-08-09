@@ -1,0 +1,14 @@
+{
+  "name": "@mono/root",
+  "private": true,
+  "packageManager": "pnpm@9.7.0",
+  "scripts": {
+    "install:all": "pnpm install",
+    "dev": "cross-var pnpm --filter templates/template-$npm_config_app dev",
+    "build": "pnpm -r build",
+    "clean": "pnpm -r exec rimraf dist .astro .vercel .netlify"
+  },
+  "devDependencies": {
+    "cross-var": "^1.1.0"
+  }
+}
