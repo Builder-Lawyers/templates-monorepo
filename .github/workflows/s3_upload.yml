@@ -3,7 +3,7 @@ name: Upload Changed Templates to S3
 on:
   push:
     branches:
-      - main
+      - master
     paths-ignore:
       - 'boilerplate-template/**'
 
@@ -34,7 +34,7 @@ jobs:
           if [ -n "$CHANGED_FILES" ]; then
             for file in $CHANGED_FILES; do
               echo "Uploading $file to S3..."
-              aws s3 cp "$file" "s3://my-template-bucket/$BUCKET_NAME${file#./}""
+              aws s3 cp "$file" "s3://$BUCKET_NAME$/editor/{file#./}""
             done
           else
             echo "No changed files to upload."
