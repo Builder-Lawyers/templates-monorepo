@@ -1,0 +1,41 @@
+name: Upload Changed Templates to S3
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'boilerplate-template/**'
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # Diff with previous commit
+
+      - name: Install AWS CLI
+        run: sudo apt-get install -y awscli
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region:  ${{ vars.AWS_REGION }}
+
+      - name: Upload changed files to S3
+        run: |
+          # Get changed files excluding boilerplate-template directory
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- . ':!templates/boilerplate-template/**' | tr '\n' ' ')
+          
+          if [ -n "$CHANGED_FILES" ]; then
+            for file in $CHANGED_FILES; do
+              echo "Uploading $file to S3..."
+              aws s3 cp "$file" "s3://my-template-bucket/$BUCKET_NAME${file#./}""
+            done
+          else
+            echo "No changed files to upload."
+          fi
