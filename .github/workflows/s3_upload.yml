@@ -26,12 +26,12 @@ jobs:
       - name: Upload changed files to S3
         run: |
           # Get changed files excluding boilerplate-template directory
-          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- . ':!templates/boilerplate-template/**' | tr '\n' ' ')
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- . ':!boilerplate-template/**' | tr '\n' ' ')
           
           if [ -n "$CHANGED_FILES" ]; then
             for file in $CHANGED_FILES; do
               echo "Uploading $file to S3..."
-              aws s3 cp "$file" "s3://${{vars.BUCKET_NAME}}/templates-sources/{file#./}"
+              aws s3 cp "$file" "s3://${{vars.BUCKET_NAME}}/templates-sources/${file#./}"
             done
           else
             echo "No changed files to upload."
