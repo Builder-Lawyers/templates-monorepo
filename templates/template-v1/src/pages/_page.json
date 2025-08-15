@@ -43,14 +43,14 @@
           "type": "hero",
           "props": {
             "id": "hero-1",
-            "title": "Astro boilerplate for Builder",
+            "title": "Astro boilerplate for Builder-Editor",
             "buttons": [
               {
                 "label": "Our GitHub",
                 "href": "https://github.com/Builder-Lawyers/builder-template"
               },
               {
-                "label": "Astro",
+                "label": "Astro framework",
                 "href": "https://astro.build/"
               }
             ]
