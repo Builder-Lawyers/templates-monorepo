@@ -43,7 +43,7 @@
           "type": "hero",
           "props": {
             "id": "hero-1",
-            "title": "Astro boilerplate for Builder-Editor Test",
+            "title": "Astro boilerplate for Builder-Editor",
             "buttons": [
               {
                 "label": "Our GitHub",

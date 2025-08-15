@@ -31,7 +31,7 @@ jobs:
           if [ -n "$CHANGED_FILES" ]; then
             for file in $CHANGED_FILES; do
               echo "Uploading $file to S3..."
-              aws s3 cp "$file" "s3://$BUCKET_NAME$/editor/{file#./}""
+              aws s3 cp "$file" "s3://$BUCKET_NAME$/editor/{file#./}"
             done
           else
             echo "No changed files to upload."
