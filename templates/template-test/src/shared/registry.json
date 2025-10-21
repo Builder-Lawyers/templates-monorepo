@@ -1,0 +1,9 @@
+[
+  {
+    "id": "1",
+    "type": "Header",
+    "props": {
+      "title": "My Custom Title"
+    }
+  }
+]

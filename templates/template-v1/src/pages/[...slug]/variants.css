@@ -1,0 +1,14 @@
+:root {
+    --layout-padding: 12px;
+}
+
+.text-title{
+    font-family: "Montserrat", sans-serif !important;
+    font-weight: 600;
+}
+
+.wrapper-layout {
+    margin: 0 auto;
+    padding: 0 var(--layout-padding);
+    max-width: calc(1440px - var(--layout-padding));
+}

@@ -1,0 +1,17 @@
+<header class="header">
+  <div class="header-container wrapper-layout">
+  <h1>{{title.value}}</h1>
+    <div  class="header-actions">
+     <nav class="text-title">
+        {{#each links.items}}
+         <a href='{{this.href}}'>{{this.value}}/</a>
+        {{/each}}
+    </nav>
+        <a href={{contact_me_button.href}}>
+          <button>
+           {{contact_me_button.value}}
+          </button>
+        </a>
+    </div>
+  </div>
+</header>

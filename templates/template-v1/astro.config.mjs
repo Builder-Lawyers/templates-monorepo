@@ -8,6 +8,13 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     base: "",
+    server: {
+      allowedHosts: ["host.docker.internal"],
+    },
+    build: {
+      cssCodeSplit: false,
+      assetsInlineLimit: 128,
+    },
     resolve: {
       alias: {
         "@": new URL("./src", import.meta.url).pathname,

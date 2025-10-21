@@ -1,92 +1,31 @@
 ---
-import "@/pages/_index.css";
-import { astroFactory } from "@/components/fabric/fabric";
-import type { Global, Page } from "@/components/fabric/fabric";
-import { pageData } from "../_page";
-import AppLayout from "@/shared/ui/layout/App/AppLayout.astro";
-import Header from "@/components/header/Header.astro";
-import Footer from "../../components/footer/Footer.astro";
+import {  pages } from "../../components";
+import { renderWidget } from "../../shared/lib";
+import "./index.css"
+import "./resets.css"
+import "./variants.css"
 
-export function getStaticPaths() {
-  if (pageData.error) throw new Error(pageData.error.message);
-
-  const pages = pageData.data.pages;
-  const global = pageData.data.global;
-
-  return pages.map((page) => {
-    return {
-      params: { slug: page.slug },
-      props: {
-        ...page,
-        global,
-      },
-    };
-  });
+export async function getStaticPaths() {
+  return pages.map((page) => ({
+    params: { id: page.label.toLowerCase() },
+    props: { page },
+  }));
 }
 
-const props = Astro.props as Page & {
-  pages: Page[];
-  global: Global;
-};
+const { page } = Astro.props;
+
+const html = page.registry.map((w) => renderWidget(w.component, w.options));
 ---
 
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
-      rel="stylesheet"
-    />
-    <title>{props.title}</title>
-  </head>
-  <body>
-    <AppLayout>
-      <Header
-        slot="header"
-        {...props.global.props.widgets.find((obj) => obj.type === "header")}
-      />
-      {
-        props?.widgets?.map((widget) => {
-          const type = widget.type as keyof typeof astroFactory;
-          const Component = astroFactory[type];
-          return <Component {...(widget.props as any)} />;
-        })
-      }
-      <Footer
-        slot="footer"
-        {...props.global.props.widgets.find((obj) => obj.type === "footer")}
-      />
-    </AppLayout>
-  </body>
-  <style>
-    html,
-    body {
-      margin: 0;
-      width: 100%;
-      height: 100%;
-    }
-  </style>
-  <script>
-    import { syncPropsWithJson } from "../../shared/lib/utils/syncWithProps";
-    console.log("[edit.js] RUNNING DIRECT INLINE SCRIPT");
-    if (window.parent !== window) {
-      console.log("[edit.js] Edit mode enabled");
-
-      window.addEventListener("message", (event) => {
-        console.log("[edit.js] message received");
-        const { json, type } = event.data;
-
-        if (type === "sync-json") {
-          console.log("[edit.js] Received sync-json message");
-          syncPropsWithJson(json);
-        }
-      });
-    }
-  </script>
-  <script src="../../shared/lib/edit.js"></script>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>{page.label}</title>
+</head>
+<body>
+<Fragment set:html={html} />
+</body>
 </html>

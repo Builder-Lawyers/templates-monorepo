@@ -1,0 +1,29 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import {Renderer} from "../../shared";
+
+import registry from "../../shared/registry.json";
+
+export async function getStaticPaths() {
+    const slugs = ["", "about", "contact"];
+
+    return slugs.map((slug) => ({
+        params: { slug },
+        props: { slug },
+    }));
+}
+
+const { slug } = Astro.params;
+---
+
+<html>
+<head>
+    <title>{slug} | TEST</title>
+</head>
+<body>
+<Layout>
+    <Renderer client:only="react" initial={registry} />
+</Layout>
+</body>
+</html>
