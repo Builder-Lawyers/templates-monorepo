@@ -1,0 +1,109 @@
+[
+  {
+    "label": "Home",
+    "registry": [
+      {
+        "id": "header_1",
+        "label": "Header",
+        "component": "<header class=\"header\">\r\n  <div class=\"header-container wrapper-layout\">\r\n  <h1>{{title.value}}</h1>\r\n    <div  class=\"header-actions\">\r\n     <nav class=\"text-title\">\r\n        {{#each links.items}}\r\n         <a href='{{this.href}}'>{{this.value}}/</a>\r\n        {{/each}}\r\n    </nav>\r\n        <a href={{contact_me_button.href}}>\r\n          <button>\r\n           {{contact_me_button.value}}\r\n          </button>\r\n        </a>\r\n    </div>\r\n  </div>\r\n</header>",
+        "options": [
+          {
+            "id": "EbwRKVpzRCiQmLZLszpzj",
+            "meta": "list",
+            "label": "links",
+            "changeable": {
+              "items": [
+                {
+                  "id": "HeSB3KTOAFPDwN7dG_9aV",
+                  "meta": "button",
+                  "label": "Page button",
+                  "kind": "link",
+                  "changeable": {
+                    "href": "https://google.com",
+                    "value": "Google"
+                  }
+                },
+                {
+                  "id": "fqggmxOJ1-AmCbsF66VyX",
+                  "meta": "button",
+                  "label": "Page button",
+                  "kind": "link",
+                  "changeable": {
+                    "href": "https://yandex.com",
+                    "value": "Yandex"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "id": "quB8PPnSlllmRZIHhQOl7",
+            "meta": "text",
+            "label": "title",
+            "changeable": {
+              "value": "Builder"
+            }
+          },
+          {
+            "id": "u7Rtxy5IXjP1L9vSjDFUd",
+            "meta": "button",
+            "label": "contact_me_button",
+            "kind": "link",
+            "changeable": {
+              "href": "#",
+              "value": "Contact Me"
+            }
+          }
+        ]
+      },
+      {
+        "id": "hero_1",
+        "label": "Hero",
+        "component": "<div class=\"hero wrapper-layout\">\r\n  <div class=\"hero-content\">\r\n    <h1 class='text-title'>{{title.value}}</h1>\r\n    <div class='description'>\r\n    <p class=\"text-description\">{{description.value}}</p>\r\n    <button>{{button.value}}</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n",
+        "options": [
+          {
+            "id": "a44gLuvLAm7Sz34j8_F7z",
+            "meta": "text",
+            "label": "title",
+            "changeable": {
+              "value": "Title of Hero."
+            }
+          },
+          {
+            "id": "8nWqMp6XmOC1ITN2L2jTe",
+            "meta": "button",
+            "label": "button",
+            "kind": "default",
+            "changeable": {
+              "value": "Let's connect"
+            }
+          },
+          {
+            "id": "U0S3Cc2b9dEepWxY8tyv9",
+            "meta": "text",
+            "label": "description",
+            "changeable": {
+              "value": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Adipiscing elit quisque faucibus ex sapien vitae pellentesque. Vitae pellentesque sem placerat in id cursus mi. Cursus mi pretium tellus duis convallis tempus leo. Tempus leo eu aenean sed diam urna tempor. Urna tempor pulvinar vivamus fringilla lacus nec metus."
+            }
+          }
+        ]
+      },
+      {
+        "id": "Image",
+        "label": "Image",
+        "component": "<div class=\"image-wrapper\">\r\n  <img class=\"image\" src={{image.src}} alt={{image.value}}>\r\n</div>",
+        "options": [
+          {
+            "id": "mtbiTCHr6mGnY5TE8gqTv",
+            "meta": "image",
+            "label": "image",
+            "changeable": {
+              "src": "https://wallpapers.com/images/hd/lawyer-background-tq7qiiob3gj4tc94.jpg",
+              "value": "dsasa"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
