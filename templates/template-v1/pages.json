@@ -8,13 +8,13 @@
         "component": "<header class=\"header\">\r\n  <div class=\"header-container wrapper-layout\">\r\n  <h1>{{title.value}}</h1>\r\n    <div  class=\"header-actions\">\r\n     <nav class=\"text-title\">\r\n        {{#each links.items}}\r\n         <a href='{{this.href}}'>{{this.value}}/</a>\r\n        {{/each}}\r\n    </nav>\r\n        <a href={{contact_me_button.href}}>\r\n          <button>\r\n           {{contact_me_button.value}}\r\n          </button>\r\n        </a>\r\n    </div>\r\n  </div>\r\n</header>",
         "options": [
           {
-            "id": "EbwRKVpzRCiQmLZLszpzj",
+            "id": "o-PXRLqvuKOr9t_lx-5E-",
             "meta": "list",
             "label": "links",
             "changeable": {
               "items": [
                 {
-                  "id": "HeSB3KTOAFPDwN7dG_9aV",
+                  "id": "ddTtfnihrf8oZiTFCZU5F",
                   "meta": "button",
                   "label": "Page button",
                   "kind": "link",
@@ -24,7 +24,7 @@
                   }
                 },
                 {
-                  "id": "fqggmxOJ1-AmCbsF66VyX",
+                  "id": "bmeqVkjWGTHf-mxXW6INj",
                   "meta": "button",
                   "label": "Page button",
                   "kind": "link",
@@ -37,7 +37,7 @@
             }
           },
           {
-            "id": "quB8PPnSlllmRZIHhQOl7",
+            "id": "poa4ootkW5JmWxFw2wT7W",
             "meta": "text",
             "label": "title",
             "changeable": {
@@ -45,7 +45,7 @@
             }
           },
           {
-            "id": "u7Rtxy5IXjP1L9vSjDFUd",
+            "id": "UEG475Kqtp9YYAoBXIB19",
             "meta": "button",
             "label": "contact_me_button",
             "kind": "link",
@@ -62,7 +62,7 @@
         "component": "<div class=\"hero wrapper-layout\">\r\n  <div class=\"hero-content\">\r\n    <h1 class='text-title'>{{title.value}}</h1>\r\n    <div class='description'>\r\n    <p class=\"text-description\">{{description.value}}</p>\r\n    <button>{{button.value}}</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n",
         "options": [
           {
-            "id": "a44gLuvLAm7Sz34j8_F7z",
+            "id": "NvwfURGPdY08pNlb9PiNt",
             "meta": "text",
             "label": "title",
             "changeable": {
@@ -70,7 +70,7 @@
             }
           },
           {
-            "id": "8nWqMp6XmOC1ITN2L2jTe",
+            "id": "5qN8flwQH0yyOKuz7kExA",
             "meta": "button",
             "label": "button",
             "kind": "default",
@@ -79,7 +79,7 @@
             }
           },
           {
-            "id": "U0S3Cc2b9dEepWxY8tyv9",
+            "id": "WsQ6cdrq9qzmKoVUQhY8Z",
             "meta": "text",
             "label": "description",
             "changeable": {
@@ -94,7 +94,7 @@
         "component": "<div class=\"image-wrapper\">\r\n  <img class=\"image\" src={{image.src}} alt={{image.value}}>\r\n</div>",
         "options": [
           {
-            "id": "mtbiTCHr6mGnY5TE8gqTv",
+            "id": "KbqoH25KIbztwTZPODqgo",
             "meta": "image",
             "label": "image",
             "changeable": {

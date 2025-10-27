@@ -5,7 +5,8 @@ on:
     branches:
       - master
     paths-ignore:
-      - 'boilerplate-template/**'
+      - '.github/**'
+      - .gitignore
 
 jobs:
   upload:
@@ -39,7 +40,7 @@ jobs:
 
       - name: Delete removed files from S3
         run: |
-          DELETED_FILES=$(git.diff --name-only --diff-filter=D HEAD~1 HEAD -- . ':!boilerplate-template/**' | tr '\n' ' ')
+          DELETED_FILES=$(git diff --name-only --diff-filter=D HEAD~1 HEAD -- . ':!boilerplate-template/**' | tr '\n' ' ')
           if [ -n "$DELETED_FILES" ]; then
             for file in $DELETED_FILES; do
               echo "Deleting $file from S3..."
@@ -48,3 +49,33 @@ jobs:
           else
             echo "No deleted files to remove."
           fi
+
+      - name: Detect modified templates
+        id: detect
+        run: |
+          MODIFIED=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- "templates/**" \
+            | sed -E 's#^templates/([^/]+)/.*#\1#' \
+            | sort -u)
+
+          echo "Modified template dirs:"
+          echo "$MODIFIED"
+
+          # Export as JSON array if needed
+          echo "templates=$(printf '%s\n' "$MODIFIED" | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
+
+      - name: Send SQS message with changed templates
+        if: ${{ steps.detect.outputs.templates != '' }}
+        run: |
+          COMMIT=$(git rev-parse HEAD)
+          TEMPLATES='${{ steps.detect.outputs.templates }}'
+          
+          BODY=$(jq -n \
+            --arg commit "$COMMIT" \
+            --arg templates "$TEMPLATES" \
+            '{commit: $commit, templates: ($templates | split(","))}')
+          
+          echo $BODY
+          
+          aws sqs send-message \
+            --queue-url "${{ vars.SQS_QUEUE_URL }}" \
+            --message-body "$BODY"
