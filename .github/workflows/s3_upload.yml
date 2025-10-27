@@ -11,6 +11,8 @@ on:
 jobs:
   upload:
     runs-on: ubuntu-latest
+    env:
+      SQS_QUEUE_URL: ${{ secrets.SQS_QUEUE_URL }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -77,5 +79,5 @@ jobs:
           echo $BODY
           
           aws sqs send-message \
-            --queue-url "${{ vars.SQS_QUEUE_URL }}" \
+            --queue-url "${{ secrets.SQS_QUEUE_URL }}" \
             --message-body "$BODY"
