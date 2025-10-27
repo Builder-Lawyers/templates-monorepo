@@ -75,6 +75,6 @@ jobs:
             '{commit: $commit, templates: ($templates | split(","))}')
           
           echo $BODY
-          aws sqs send-message \
+          aws sqs --region ${{ vars.QUEUE_REGION }} send-message \
             --queue-url "${{ secrets.SQS_QUEUE_URL }}" \
             --message-body "$BODY"
