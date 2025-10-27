@@ -71,10 +71,9 @@ jobs:
           
           BODY=$(jq -n \
             --arg commit "$COMMIT" \
-            --arg templates "$TEMPLATES" \
-            '{commit: $commit, templates: ($templates | split(","))}')
+            --argjson templates "$TEMPLATES" \
+            '{commit: $commit, templates: $templates}')
           
-          echo $BODY
           aws sqs --region ${{ vars.QUEUE_REGION }} send-message \
             --queue-url "${{ secrets.SQS_QUEUE_URL }}" \
             --message-body "$BODY"
