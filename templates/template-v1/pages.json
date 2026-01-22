@@ -8,23 +8,23 @@
         "component": "<header class=\"header\">\r\n  <div class=\"header-container wrapper-layout\">\r\n  <h1>{{title.value}}</h1>\r\n    <div  class=\"header-actions\">\r\n     <nav class=\"text-title\">\r\n        {{#each links.items}}\r\n         <a href='{{this.href}}'>{{this.value}}/</a>\r\n        {{/each}}\r\n    </nav>\r\n        <a href={{contact_me_button.href}}>\r\n          <button>\r\n           {{contact_me_button.value}}\r\n          </button>\r\n        </a>\r\n    </div>\r\n  </div>\r\n</header>",
         "options": [
           {
-            "id": "EbwRKVpzRCiQmLZLszpzj",
+            "id": "1S3XZbFwN6nbOKlasPUbT",
             "meta": "list",
             "label": "links",
             "changeable": {
               "items": [
                 {
-                  "id": "HeSB3KTOAFPDwN7dG_9aV",
+                  "id": "C76r8zP9KL6inmcxtlcVj",
                   "meta": "button",
                   "label": "Page button",
                   "kind": "link",
                   "changeable": {
                     "href": "https://google.com",
-                    "value": "Google"
+                    "value": "Googвіфвіфle"
                   }
                 },
                 {
-                  "id": "fqggmxOJ1-AmCbsF66VyX",
+                  "id": "qOgDyipTU1l9j1e8To3WD",
                   "meta": "button",
                   "label": "Page button",
                   "kind": "link",
@@ -37,7 +37,7 @@
             }
           },
           {
-            "id": "quB8PPnSlllmRZIHhQOl7",
+            "id": "-uNfB2xsDzpBgUVRy0zxw",
             "meta": "text",
             "label": "title",
             "changeable": {
@@ -45,7 +45,7 @@
             }
           },
           {
-            "id": "u7Rtxy5IXjP1L9vSjDFUd",
+            "id": "KdnnP0MBz9tQmLEbOEJr8",
             "meta": "button",
             "label": "contact_me_button",
             "kind": "link",
@@ -59,10 +59,10 @@
       {
         "id": "hero_1",
         "label": "Hero",
-        "component": "<div class=\"hero wrapper-layout\">\r\n  <div class=\"hero-content\">\r\n    <h1 class='text-title'>{{title.value}}</h1>\r\n    <div class='description'>\r\n    <p class=\"text-description\">{{description.value}}</p>\r\n    <button>{{button.value}}</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n",
+        "component": "<div class=\"hero wrapper-layout\">\r\n  <div class=\"hero-content\">\r\n    <h1 class='text-title'>{{title.value}}</h1>\r\n    <div class='description'>\r\n    <p class=\"text-description\">{{description.value}}</p>\r\n    <button>{{button.value}}</button>\r\n    </div>\r\n\r\n  </div>\r\n</div>\r\n\r\n",
         "options": [
           {
-            "id": "a44gLuvLAm7Sz34j8_F7z",
+            "id": "KisMmU_WZgvvOKb0VGbQG",
             "meta": "text",
             "label": "title",
             "changeable": {
@@ -70,7 +70,7 @@
             }
           },
           {
-            "id": "8nWqMp6XmOC1ITN2L2jTe",
+            "id": "t8AnLtNsGRVTlFSdkfno7",
             "meta": "button",
             "label": "button",
             "kind": "default",
@@ -79,7 +79,7 @@
             }
           },
           {
-            "id": "U0S3Cc2b9dEepWxY8tyv9",
+            "id": "fV8Q1_6ds1iOy0YnOn8-3",
             "meta": "text",
             "label": "description",
             "changeable": {
@@ -94,7 +94,7 @@
         "component": "<div class=\"image-wrapper\">\r\n  <img class=\"image\" src={{image.src}} alt={{image.value}}>\r\n</div>",
         "options": [
           {
-            "id": "mtbiTCHr6mGnY5TE8gqTv",
+            "id": "Gkfvgcr9Z-EzB9F9HWaLA",
             "meta": "image",
             "label": "image",
             "changeable": {
