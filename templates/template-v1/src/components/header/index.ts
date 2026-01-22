@@ -18,7 +18,7 @@ export const Header: Widget = {
             meta: "button",
             label: "Page button",
             kind: "link",
-            changeable: { href: "https://google.com", value: "Google" },
+            changeable: { href: "https://google.com", value: "Googвіфвіфle" },
           },
           {
             id: nanoid(),

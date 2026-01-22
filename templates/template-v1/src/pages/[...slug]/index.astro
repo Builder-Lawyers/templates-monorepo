@@ -1,9 +1,11 @@
 ---
-import {  pages } from "../../components";
+import { pages } from "../../components";
 import { renderWidget } from "../../shared/lib";
-import "./index.css"
-import "./resets.css"
-import "./variants.css"
+import fs from "node:fs";
+import path from "node:path";
+import "./index.css";
+import "./resets.css";
+import "./variants.css";
 
 export async function getStaticPaths() {
   return pages.map((page) => ({
@@ -12,20 +14,40 @@ export async function getStaticPaths() {
   }));
 }
 
+const dataPath = path.join(process.cwd(), "/pages.json");
+
+let pagesData: any[] | null = null;
+if (fs.existsSync(dataPath)) {
+  pagesData = JSON.parse(fs.readFileSync(dataPath, "utf-8"));
+}
+
 const { page } = Astro.props;
 
-const html = page.registry.map((w) => renderWidget(w.component, w.options));
+const dataPage = Array.isArray(pagesData)
+  ? pagesData.find(
+      (p) => (p?.label ?? "").toLowerCase() === page.label.toLowerCase(),
+    )
+  : null;
+
+const registry = Array.isArray(dataPage?.registry)
+  ? dataPage.registry
+  : page.registry;
+
+const html = registry.map((w) => renderWidget(w.component, w.options));
 ---
 
 <html lang="en">
-<head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
-  <meta charset="UTF-8" />
-  <title>{page.label}</title>
-</head>
-<body>
-<Fragment set:html={html} />
-</body>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <title>{page.label}</title>
+  </head>
+  <body>
+    <Fragment set:html={html} />
+  </body>
 </html>

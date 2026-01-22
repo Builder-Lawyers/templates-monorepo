@@ -29,8 +29,6 @@ export function renderWidget(template: string, options: WidgetOptions) {
     return acc;
   }, {});
 
-  console.log("render context:", context);
-
   const compiled = Handlebars.compile(template);
   return compiled(context);
 }
