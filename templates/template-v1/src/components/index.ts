@@ -9,9 +9,3 @@ export const pages: Pages[] = [
     registry: [Header, Hero, Image],
   },
 ];
-
-import { writeFileSync } from "node:fs";
-import path from "node:path";
-
-const filePath = path.resolve("./pages.json");
-writeFileSync(filePath, JSON.stringify(pages, null, 2), "utf8");
